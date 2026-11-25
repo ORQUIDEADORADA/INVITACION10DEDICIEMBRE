@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Oficial de Gala - Promoción D.R.E.A.M 2026 | Nuestra Sra. de Lourdes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dream: {
+                            goldLight: '#FEF08A',
+                            gold: '#D4AF37',
+                            goldDeep: '#9A7418',
+                            bronze: '#78550B',
+                            obsidian: '#060609',
+                            velvet: '#110E0A',
+                            champagne: '#FFFBEB'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        editorial: ['Cormorant Garamond', 'serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        cursive: ['Great Vibes', 'cursive']
+                    },
+                    animation: {
+                        'gold-pulse': 'goldPulse 3.2s infinite alternate',
+                        'float-royal': 'floatRoyal 5.5s ease-in-out infinite',
+                        'spin-halo': 'spin 28s linear infinite'
+                    },
+                    keyframes: {
+                        goldPulse: {
+                            '0%': { boxShadow: '0 0 18px rgba(212, 175, 55, 0.25), inset 0 0 10px rgba(254, 240, 138, 0.12)' },
+                            '100%': { boxShadow: '0 0 42px rgba(212, 175, 55, 0.65), inset 0 0 22px rgba(254, 240, 138, 0.28)' }
+                        },
+                        floatRoyal: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(ellipse 85% 48% at 50% -8%, rgba(212, 175, 55, 0.24) 0%, transparent 68%),
+                radial-gradient(circle at 12% 35%, rgba(180, 130, 35, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 88% 72%, rgba(212, 175, 55, 0.11) 0%, transparent 55%),
+                linear-gradient(180deg, #0D0B08 0%, #060609 55%, #0C0A07 100%);
+            color: #FFFBEB;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Degradado metálico Oro Imperial y Champán */
+        .royal-gold-text {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF08A 26%, #D4AF37 56%, #FDE047 80%, #9A7418 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .royal-btn {
+            background: linear-gradient(135deg, #FDE047 0%, #D4AF37 50%, #9A7418 100%);
+            color: #090806;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .royal-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+            transform: skewX(-24deg);
+            transition: left 0.7s ease;
+        }
+
+        .royal-btn:hover::after {
+            left: 150%;
+        }
+
+        /* Paneles de cristal oscuro con filigrana dorada */
+        .velvet-panel {
+            background: linear-gradient(155deg, rgba(212, 175, 55, 0.10) 0%, rgba(17, 14, 10, 0.88) 45%, rgba(6, 6, 9, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.36);
+            box-shadow:
+                0 24px 60px -15px rgba(0, 0, 0, 0.9),
+                inset 0 1px 0 rgba(254, 240, 138, 0.25),
+                inset 0 0 24px rgba(212, 175, 55, 0.05);
+        }
+
+        .velvet-card {
+            background: linear-gradient(160deg, rgba(212, 175, 55, 0.09) 0%, rgba(15, 13, 10, 0.86) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.78), inset 0 1px 0 rgba(254, 240, 138, 0.16);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .velvet-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(254, 240, 138, 0.65);
+            box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.88), 0 0 28px rgba(212, 175, 55, 0.22);
+        }
+
+        /* Filigrana divisoria dorada */
+        .gold-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.75), #FEF08A, rgba(212, 175, 55, 0.75), transparent);
+        }
+
+        /* Esquinas ornamentales */
+        .corner-ornament {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-color: rgba(212, 175, 55, 0.65);
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060609;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #D4AF37, #78550B);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen selection:bg-amber-300 selection:text-stone-950">
+
+    <!-- CANVAS DE DESTELLOS ESTELARES Y POLVO DE ORO -->
+    <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- ========================================== -->
+    <!-- PANTALLA DE APERTURA DE GALA (SOBRE REAL)  -->
+    <!-- ========================================== -->
+    <div id="introScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#060609]/95 backdrop-blur-md transition-opacity duration-1000 px-4 py-8">
+        <div class="relative z-10 max-w-2xl w-full text-center velvet-panel rounded-[2rem] p-8 sm:p-14 border border-amber-300/40">
+            <!-- Esquinas ornamentales -->
+            <span class="corner-ornament top-5 left-5 border-t-2 border-l-2 rounded-tl-lg"></span>
+            <span class="corner-ornament top-5 right-5 border-t-2 border-r-2 rounded-tr-lg"></span>
+            <span class="corner-ornament bottom-5 left-5 border-b-2 border-l-2 rounded-bl-lg"></span>
+            <span class="corner-ornament bottom-5 right-5 border-b-2 border-r-2 rounded-br-lg"></span>
+
+            <!-- Sello Dorado -->
+            <div class="relative w-24 h-24 mx-auto mb-7 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border border-dashed border-amber-300/45 animate-spin-halo"></div>
+                <div class="w-20 h-20 rounded-full border border-amber-200/70 bg-gradient-to-br from-amber-400/25 to-[#110E0A] flex items-center justify-center shadow-lg shadow-amber-500/20 animate-float-royal">
+                    <i data-lucide="crown" class="w-9 h-9 text-amber-200"></i>
+                </div>
+            </div>
+
+            <p class="font-cinzel text-[11px] sm:text-xs font-semibold tracking-[0.38em] text-amber-300 uppercase mb-3">
+                Nuestra Sra. de Lourdes • Nivel Primaria
+            </p>
+
+            <div class="flex items-center justify-center gap-3 my-4">
+                <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-r from-transparent to-amber-300/70"></span>
+                <span class="w-2 h-2 rotate-45 bg-amber-200 shadow-[0_0_10px_#FDE047]"></span>
+                <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-l from-transparent to-amber-300/70"></span>
+            </div>
+
+            <h1 class="font-cinzel text-4xl sm:text-6xl font-black royal-gold-text tracking-[0.16em] uppercase mb-2">
+                D.R.E.A.M
+            </h1>
+
+            <p class="font-cinzel text-[11px] sm:text-xs font-semibold tracking-[0.26em] text-amber-200/90 uppercase mb-3">
+                Divertidos Recuerdos Entre Amigos Memorables
+            </p>
+
+            <p class="font-editorial italic text-2xl sm:text-4xl text-amber-100 mb-3">
+                “Una Noche Inolvidable de Gala y Ensueño”
+            </p>
+
+            <p class="text-xs sm:text-sm text-amber-100/75 font-light max-w-md mx-auto mb-8 leading-relaxed">
+                Gran Gala de Graduación • Jueves, 10 de Diciembre de 2026
+            </p>
+
+            <button onclick="openInvitation()" class="group relative inline-flex items-center justify-center px-9 py-4 font-cinzel font-extrabold rounded-full royal-btn border border-amber-100/80 shadow-xl animate-gold-pulse hover:scale-[1.03] active:scale-[0.99] transition-all duration-300 tracking-[0.2em] text-xs sm:text-sm uppercase cursor-pointer">
+                <i data-lucide="sparkles" class="w-4 h-4 mr-2.5 text-stone-950 transition-transform duration-300 group-hover:rotate-12"></i>
+                Abrir Invitación Oficial
+            </button>
+
+            <p class="text-[10px] sm:text-[11px] text-amber-300/75 mt-5 tracking-[0.22em] uppercase">
+                Toca para ingresar con melodía de gala
+            </p>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- CONTENIDO PRINCIPAL DE LA INVITACIÓN       -->
+    <!-- ========================================== -->
+    <main id="mainContent" class="relative z-10 min-h-screen opacity-0 pointer-events-none transition-opacity duration-1000 pb-20">
+
+        <!-- BARRA SUPERIOR DE NAVEGACIÓN -->
+        <header class="sticky top-0 z-30 border-b border-amber-300/15 bg-[#060609]/85 backdrop-blur-xl">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+                <a href="#inicio" class="font-cinzel text-xs sm:text-sm font-bold tracking-[0.25em] text-amber-100 uppercase flex items-center gap-2.5">
+                    <i data-lucide="crown" class="w-4 h-4 text-amber-300"></i>
+                    <span>D.R.E.A.M • 2026</span>
+                </a>
+                <nav class="hidden sm:flex items-center gap-7 text-[11px] font-cinzel tracking-[0.2em] uppercase text-amber-100/80">
+                    <a href="#invitacion" class="hover:text-amber-300 transition-colors">Invitación</a>
+                    <a href="#detalles" class="hover:text-amber-300 transition-colors">Detalles</a>
+                    <a href="#programa" class="hover:text-amber-300 transition-colors">Programa</a>
+                </nav>
+                <button onclick="addToCalendar()" class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-amber-300/45 bg-amber-400/15 text-amber-100 font-cinzel text-[10px] font-bold tracking-[0.18em] uppercase hover:bg-amber-300 hover:text-stone-950 transition-all cursor-pointer">
+                    <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
+                    <span>Agendar</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- BOTÓN FLOTANTE DE AUDIO -->
+        <button id="audioToggleBtn" onclick="toggleAudio()" title="Activar o silenciar música" aria-label="Activar o silenciar música" class="fixed bottom-6 right-6 z-40 p-3.5 rounded-full velvet-panel border border-amber-300/50 text-amber-200 shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer">
+            <i id="audioIcon" data-lucide="volume-2" class="w-5 h-5"></i>
+        </button>
+
+        <!-- SECCIÓN HERO -->
+        <section id="inicio" class="relative min-h-[76vh] flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-14 pb-12 overflow-hidden">
+            <!-- Distintivo Institucional -->
+            <div class="inline-flex items-center gap-2.5 px-7 py-2.5 rounded-full bg-amber-400/10 border border-amber-300/45 backdrop-blur-md mb-7 animate-float-royal">
+                <i data-lucide="award" class="w-4 h-4 text-amber-300"></i>
+                <span class="font-cinzel text-[10px] sm:text-xs font-bold tracking-[0.28em] text-amber-100 uppercase">
+                    Nuestra Sra. de Lourdes • Nivel Primaria
+                </span>
+            </div>
+
+            <p class="font-cinzel text-xs sm:text-sm font-semibold tracking-[0.42em] text-amber-300 uppercase mb-3">
+                Gran Gala de Graduación
+            </p>
+
+            <h1 class="font-cinzel text-5xl sm:text-8xl font-black tracking-[0.16em] uppercase mb-3 royal-gold-text drop-shadow-xl">
+                D.R.E.A.M
+            </h1>
+
+            <p class="font-cinzel text-xs sm:text-sm font-semibold tracking-[0.28em] text-amber-200/95 uppercase mb-2 px-4">
+                Divertidos Recuerdos Entre Amigos Memorables
+            </p>
+
+            <div class="flex items-center justify-center gap-3 my-3">
+                <span class="h-[1px] w-20 sm:w-32 bg-gradient-to-r from-transparent to-amber-300/70"></span>
+                <span class="font-cinzel text-[11px] tracking-[0.35em] text-amber-200 uppercase">Promoción 2026</span>
+                <span class="h-[1px] w-20 sm:w-32 bg-gradient-to-l from-transparent to-amber-300/70"></span>
+            </div>
+
+            <p class="font-editorial italic text-3xl sm:text-5xl text-amber-50 mb-6 px-2">
+                “Una Noche Inolvidable de Gala y Ensueño”
+            </p>
+
+            <p class="max-w-xl text-amber-100/85 text-sm sm:text-[15px] font-light leading-relaxed px-4 mb-8">
+                Los sueños construidos con dedicación hoy se convierten en realidad. Celebramos con orgullo la culminación de nuestra etapa en Nivel Primaria.
+            </p>
+
+            <a href="#invitacion" class="inline-flex items-center gap-2 text-xs font-cinzel tracking-[0.25em] uppercase text-amber-300 hover:text-white transition-colors">
+                <span>Descubrir Invitación</span>
+                <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+            </a>
+        </section>
+
+        <!-- TARJETA PRINCIPAL DE INVITACIÓN -->
+        <section id="invitacion" class="max-w-4xl mx-auto px-4 sm:px-6 mb-14">
+            <div class="velvet-panel rounded-[2rem] p-8 sm:p-14 text-center relative overflow-hidden">
+                <span class="corner-ornament top-5 left-5 border-t border-l rounded-tl-md"></span>
+                <span class="corner-ornament top-5 right-5 border-t border-r rounded-tr-md"></span>
+                <span class="corner-ornament bottom-5 left-5 border-b border-l rounded-bl-md"></span>
+                <span class="corner-ornament bottom-5 right-5 border-b border-r rounded-br-md"></span>
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-amber-400/15 border border-amber-300/50 flex items-center justify-center mb-7 text-amber-200 shadow-lg">
+                    <i data-lucide="mail-open" class="w-7 h-7"></i>
+                </div>
+
+                <p class="font-cinzel text-[11px] tracking-[0.32em] text-amber-300 uppercase mb-2">
+                    Honor de su Presencia
+                </p>
+
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold tracking-[0.12em] text-white uppercase mb-5">
+                    Están Cordialmente <span class="royal-gold-text">Invitados</span>
+                </h2>
+
+                <p class="font-editorial text-xl sm:text-2xl text-amber-100 leading-relaxed max-w-2xl mx-auto mb-8">
+                    “Su valiosa compañía hará aún más memorable esta velada de ensueño en la que celebramos nuestros logros y el inicio de nuevos horizontes.”
+                </p>
+
+                <button onclick="addToCalendar()" class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full royal-btn border border-amber-100/80 font-cinzel font-extrabold text-xs sm:text-sm tracking-[0.2em] uppercase hover:scale-[1.03] active:scale-[0.99] transition-all shadow-xl shadow-amber-500/15 cursor-pointer">
+                    <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+                    Agendar en Google Calendar
+                </button>
+            </div>
+        </section>
+
+        <!-- CUENTA REGRESIVA -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 mb-16">
+            <div class="velvet-panel rounded-[2rem] p-7 sm:p-11 text-center relative overflow-hidden">
+                <p class="font-cinzel text-xs sm:text-sm font-bold tracking-[0.3em] text-amber-300 uppercase mb-2">
+                    Jueves, 10 de Diciembre de 2026 • 06:30 PM
+                </p>
+                <h3 class="font-cinzel text-lg sm:text-2xl font-bold tracking-[0.16em] text-white uppercase mb-7 flex items-center justify-center gap-2.5">
+                    <i data-lucide="clock" class="w-5 h-5 text-amber-300"></i>
+                    <span>Tiempo Restante para la Gala</span>
+                </h3>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-2xl mx-auto">
+                    <div class="bg-[#060609]/85 p-4 sm:p-6 rounded-2xl border border-amber-300/30 shadow-inner">
+                        <span id="cd-days" class="font-cinzel text-3xl sm:text-5xl font-bold text-white block tabular-nums">00</span>
+                        <span class="text-[10px] sm:text-xs text-amber-300 uppercase tracking-[0.25em] mt-2 block font-medium">Días</span>
+                    </div>
+                    <div class="bg-[#060609]/85 p-4 sm:p-6 rounded-2xl border border-amber-300/30 shadow-inner">
+                        <span id="cd-hours" class="font-cinzel text-3xl sm:text-5xl font-bold text-white block tabular-nums">00</span>
+                        <span class="text-[10px] sm:text-xs text-amber-300 uppercase tracking-[0.25em] mt-2 block font-medium">Horas</span>
+                    </div>
+                    <div class="bg-[#060609]/85 p-4 sm:p-6 rounded-2xl border border-amber-300/30 shadow-inner">
+                        <span id="cd-minutes" class="font-cinzel text-3xl sm:text-5xl font-bold text-white block tabular-nums">00</span>
+                        <span class="text-[10px] sm:text-xs text-amber-300 uppercase tracking-[0.25em] mt-2 block font-medium">Minutos</span>
+                    </div>
+                    <div class="bg-[#060609]/85 p-4 sm:p-6 rounded-2xl border border-amber-200/55 shadow-inner">
+                        <span id="cd-seconds" class="font-cinzel text-3xl sm:text-5xl font-bold royal-gold-text block tabular-nums">00</span>
+                        <span class="text-[10px] sm:text-xs text-amber-200 uppercase tracking-[0.25em] mt-2 block font-medium">Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COORDENADAS DEL EVENTO (3 COLUMNAS) -->
+        <section id="detalles" class="max-w-5xl mx-auto px-4 sm:px-6 mb-16">
+            <div class="text-center mb-11">
+                <p class="font-cinzel text-xs font-semibold tracking-[0.34em] text-amber-300 uppercase mb-2">
+                    Información Oficial
+                </p>
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-white tracking-[0.12em] uppercase">
+                    Detalles de la <span class="royal-gold-text">Ceremonia</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Fecha -->
+                <div class="velvet-card rounded-[1.75rem] p-8 text-center flex flex-col items-center justify-between">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 rounded-full bg-amber-400/15 border border-amber-300/45 flex items-center justify-center mb-5 text-amber-200">
+                            <i data-lucide="calendar" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[10px] font-cinzel tracking-[0.28em] text-amber-300/80 uppercase mb-1">01 • Fecha</span>
+                        <h3 class="font-cinzel text-base font-bold text-white uppercase tracking-[0.16em] mb-3">Fecha Confirmada</h3>
+                        <p class="text-amber-100 font-semibold text-base">Jueves, 10 de Diciembre</p>
+                        <p class="text-amber-200/75 text-xs mt-1.5 leading-relaxed">Año 2026 • Recepción 06:30 PM<br>Ceremonia Principal 08:00 PM</p>
+                    </div>
+                </div>
+
+                <!-- Ubicación -->
+                <div class="velvet-card rounded-[1.75rem] p-8 text-center flex flex-col items-center justify-between">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 rounded-full bg-amber-400/15 border border-amber-300/45 flex items-center justify-center mb-5 text-amber-200">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[10px] font-cinzel tracking-[0.28em] text-amber-300/80 uppercase mb-1">02 • Salón</span>
+                        <h3 class="font-cinzel text-base font-bold text-white uppercase tracking-[0.16em] mb-3">Ubicación del Salón</h3>
+                        <p class="text-amber-100 font-semibold text-base">Orquídea Dorada</p>
+                        <p class="text-amber-200/75 text-xs mt-1.5 mb-5">Av. Chillón Trapiche 051, Comas</p>
+                    </div>
+                    <a href="https://www.google.com/maps/place/?q=place_id:ChIJ_fvvfPzRBZERNVtsrRCZYkA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-amber-300/50 bg-amber-400/15 text-amber-100 font-cinzel text-[11px] font-bold tracking-[0.18em] uppercase hover:bg-amber-300 hover:text-stone-950 transition-all">
+                        <i data-lucide="navigation" class="w-3.5 h-3.5"></i> Ver en Google Maps
+                    </a>
+                </div>
+
+                <!-- Etiqueta y Distinción -->
+                <div class="velvet-card rounded-[1.75rem] p-8 text-center flex flex-col items-center justify-between">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 rounded-full bg-amber-400/15 border border-amber-300/45 flex items-center justify-center mb-5 text-amber-200">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[10px] font-cinzel tracking-[0.28em] text-amber-300/80 uppercase mb-1">03 • Dress Code</span>
+                        <h3 class="font-cinzel text-base font-bold text-white uppercase tracking-[0.16em] mb-3">Código de Vestimenta</h3>
+                        <p class="text-amber-100 font-semibold text-base">Gala Elegante</p>
+                        <p class="text-amber-200/75 text-xs mt-1.5 leading-relaxed">Damas: Vestido de Gala<br>Caballeros: Traje Formal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIGNIFICADO DEL ACRÓNIMO D.R.E.A.M -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 mb-16">
+            <div class="velvet-panel rounded-[2rem] p-7 sm:p-10 text-center relative overflow-hidden">
+                <p class="font-cinzel text-[10px] sm:text-xs font-semibold tracking-[0.34em] text-amber-300 uppercase mb-2">
+                    Nuestro Lema Promocional
+                </p>
+                <h3 class="font-editorial italic text-2xl sm:text-4xl text-amber-100 mb-7">
+                    “Divertidos Recuerdos Entre Amigos Memorables”
+                </h3>
+                <div class="grid grid-cols-5 gap-2 sm:gap-4 max-w-2xl mx-auto">
+                    <div class="bg-[#060609]/85 p-3 sm:p-5 rounded-2xl border border-amber-300/35">
+                        <span class="font-cinzel text-2xl sm:text-4xl font-black royal-gold-text block">D</span>
+                        <span class="text-[9px] sm:text-xs text-amber-100/90 uppercase tracking-wider mt-1.5 block font-medium">Divertidos</span>
+                    </div>
+                    <div class="bg-[#060609]/85 p-3 sm:p-5 rounded-2xl border border-amber-300/35">
+                        <span class="font-cinzel text-2xl sm:text-4xl font-black royal-gold-text block">R</span>
+                        <span class="text-[9px] sm:text-xs text-amber-100/90 uppercase tracking-wider mt-1.5 block font-medium">Recuerdos</span>
+                    </div>
+                    <div class="bg-[#060609]/85 p-3 sm:p-5 rounded-2xl border border-amber-300/35">
+                        <span class="font-cinzel text-2xl sm:text-4xl font-black royal-gold-text block">E</span>
+                        <span class="text-[9px] sm:text-xs text-amber-100/90 uppercase tracking-wider mt-1.5 block font-medium">Entre</span>
+                    </div>
+                    <div class="bg-[#060609]/85 p-3 sm:p-5 rounded-2xl border border-amber-300/35">
+                        <span class="font-cinzel text-2xl sm:text-4xl font-black royal-gold-text block">A</span>
+                        <span class="text-[9px] sm:text-xs text-amber-100/90 uppercase tracking-wider mt-1.5 block font-medium">Amigos</span>
+                    </div>
+                    <div class="bg-[#060609]/85 p-3 sm:p-5 rounded-2xl border border-amber-300/35">
+                        <span class="font-cinzel text-2xl sm:text-4xl font-black royal-gold-text block">M</span>
+                        <span class="text-[9px] sm:text-xs text-amber-100/90 uppercase tracking-wider mt-1.5 block font-medium">Memorables</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRAMA DE LA NOCHE -->
+        <section id="programa" class="max-w-3xl mx-auto px-4 sm:px-6 mb-16">
+            <div class="velvet-panel rounded-[2rem] p-8 sm:p-12 relative overflow-hidden">
+                <div class="text-center mb-10">
+                    <p class="font-cinzel text-xs font-semibold tracking-[0.34em] text-amber-300 uppercase mb-2">
+                        Itinerario Oficial
+                    </p>
+                    <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-white tracking-[0.12em] uppercase">
+                        Programa de la <span class="royal-gold-text">Noche</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Bloque 1 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-5 rounded-2xl bg-[#060609]/80 border border-amber-300/25 hover:border-amber-300/60 transition-colors">
+                        <div class="flex items-center gap-3.5">
+                            <span class="w-3 h-3 rotate-45 bg-amber-300 shadow-[0_0_10px_#FDE047] shrink-0"></span>
+                            <div>
+                                <h4 class="font-cinzel text-sm sm:text-base font-bold text-white tracking-[0.1em] uppercase">Ingreso / Recepción</h4>
+                                <p class="text-xs text-amber-200/75 font-light mt-0.5">Bienvenida oficial en el salón Orquídea Dorada</p>
+                            </div>
+                        </div>
+                        <span class="font-cinzel text-xs sm:text-sm font-bold text-amber-100 bg-amber-400/15 border border-amber-300/35 px-3.5 py-1.5 rounded-full self-start sm:self-center">
+                            06:30 PM
+                        </span>
+                    </div>
+
+                    <!-- Bloque 2 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-5 rounded-2xl bg-[#060609]/80 border border-amber-300/25 hover:border-amber-300/60 transition-colors">
+                        <div class="flex items-center gap-3.5">
+                            <span class="w-3 h-3 rotate-45 bg-amber-300 shadow-[0_0_10px_#FDE047] shrink-0"></span>
+                            <div>
+                                <h4 class="font-cinzel text-sm sm:text-base font-bold text-white tracking-[0.1em] uppercase">Sesión Fotográfica</h4>
+                                <p class="text-xs text-amber-200/75 font-light mt-0.5">Retratos oficiales de gala con familiares e invitados</p>
+                            </div>
+                        </div>
+                        <span class="font-cinzel text-xs sm:text-sm font-bold text-amber-100 bg-amber-400/15 border border-amber-300/35 px-3.5 py-1.5 rounded-full self-start sm:self-center">
+                            07:00 PM - 08:00 PM
+                        </span>
+                    </div>
+
+                    <!-- Bloque 3 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-5 rounded-2xl bg-[#060609]/80 border border-amber-300/45 hover:border-amber-200/80 transition-colors">
+                        <div class="flex items-center gap-3.5">
+                            <span class="w-3 h-3 rotate-45 bg-amber-100 shadow-[0_0_12px_#FFFBEB] shrink-0"></span>
+                            <div>
+                                <h4 class="font-cinzel text-sm sm:text-base font-bold text-white tracking-[0.1em] uppercase">Ceremonia Principal</h4>
+                                <p class="text-xs text-amber-200/75 font-light mt-0.5">Acto central de graduación de la Promoción D.R.E.A.M</p>
+                            </div>
+                        </div>
+                        <span class="font-cinzel text-xs sm:text-sm font-bold text-stone-950 bg-amber-300 px-3.5 py-1.5 rounded-full self-start sm:self-center">
+                            08:00 PM
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PIE DE PÁGINA INSTITUCIONAL -->
+        <footer class="text-center text-amber-200/75 text-xs font-cinzel pt-4 max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="gold-divider w-full mb-8"></div>
+            <p class="tracking-[0.26em] text-amber-100 font-semibold uppercase">NUESTRA SRA. DE LOURDES • PROMOCIÓN D.R.E.A.M 2026</p>
+            <p class="mt-2.5 text-amber-200/70 font-montserrat text-xs font-light">Agradecemos profundamente su grata compañía en esta noche inolvidable.</p>
+        </footer>
+    </main>
+
+    <!-- SCRIPT DE ESTRELLAS DORADAS, AUDIO Y CUENTA REGRESIVA -->
+    <script>
+        if (window.lucide) lucide.createIcons();
+
+        let audioCtx = null;
+        let isPlayingAudio = false;
+        let musicInterval = null;
+
+        function startGalaMusic() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+            }
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            if (musicInterval) return;
+
+            const chords = [
+                { bass: 146.83, notes: [293.66, 369.99, 440.00, 587.33] },
+                { bass: 185.00, notes: [369.99, 440.00, 554.37, 739.99] },
+                { bass: 196.00, notes: [392.00, 493.88, 587.33, 783.99] },
+                { bass: 220.00, notes: [440.00, 554.37, 659.25, 880.00] }
+            ];
+
+            let step = 0;
+            musicInterval = setInterval(() => {
+                if (!audioCtx || audioCtx.state !== 'running') return;
+                const chord = chords[Math.floor(step / 3) % chords.length];
+                const beat = step % 3;
+                const now = audioCtx.currentTime;
+
+                if (beat === 0) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(chord.bass, now);
+                    gain.gain.setValueAtTime(0.001, now);
+                    gain.gain.exponentialRampToValueAtTime(0.09, now + 0.06);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 1.0);
+                } else {
+                    chord.notes.forEach((freq, i) => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now);
+                        gain.gain.setValueAtTime(0.001, now);
+                        gain.gain.exponentialRampToValueAtTime(0.025 / (i + 1), now + 0.04);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.7);
+                    });
+                }
+                step++;
+            }, 480);
+
+            isPlayingAudio = true;
+            updateAudioIcon();
+        }
+
+        function toggleAudio() {
+            if (!audioCtx) {
+                startGalaMusic();
+                return;
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+                isPlayingAudio = true;
+            } else {
+                audioCtx.suspend();
+                isPlayingAudio = false;
+            }
+            updateAudioIcon();
+        }
+
+        function updateAudioIcon() {
+            const icon = document.getElementById('audioIcon');
+            if (icon) {
+                icon.setAttribute('data-lucide', isPlayingAudio ? 'volume-2' : 'volume-x');
+                if (window.lucide) lucide.createIcons();
+            }
+        }
+
+        function stopAudioOnLeave() {
+            if (audioCtx && audioCtx.state === 'running') {
+                audioCtx.suspend();
+                isPlayingAudio = false;
+                updateAudioIcon();
+            }
+        }
+        document.addEventListener('visibilitychange', () => { if (document.hidden) stopAudioOnLeave(); });
+        window.addEventListener('pagehide', stopAudioOnLeave);
+
+        function openInvitation() {
+            startGalaMusic();
+            const intro = document.getElementById('introScreen');
+            const main = document.getElementById('mainContent');
+
+            intro.classList.add('opacity-0');
+            setTimeout(() => {
+                intro.classList.add('hidden');
+                main.classList.remove('pointer-events-none', 'opacity-0');
+
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 115,
+                        spread: 85,
+                        origin: { y: 0.6 },
+                        colors: ['#D4AF37', '#FEF08A', '#FDE047', '#FFFFFF']
+                    });
+                }
+            }, 850);
+        }
+
+        // Google Calendar (Jueves 10 de Diciembre 2026 - 6:30 PM)
+        function addToCalendar() {
+            const title = encodeURIComponent("Gala de Graduación Promoción D.R.E.A.M 2026 - Nuestra Sra. de Lourdes");
+            const details = encodeURIComponent("Gran Gala de Graduación Promoción D.R.E.A.M (Divertidos Recuerdos Entre Amigos Memorables) - Nivel Primaria.\n\nPrograma:\n- 06:30 PM: Ingreso / Recepción\n- 07:00 PM - 08:00 PM: Sesión Fotográfica\n- 08:00 PM: Ceremonia Principal");
+            const location = encodeURIComponent("Orquídea Dorada, Av. Chillón Trapiche 051, Comas");
+            // 18:30 PET (UTC-5) = 23:30 UTC del 10 de Diciembre
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20261210T233000Z/20261211T040000Z&details=${details}&location=${location}`;
+            window.open(url, '_blank');
+        }
+
+        // Cuenta regresiva (Jueves 10 de Diciembre de 2026 - 06:30 PM)
+        const target = new Date("2026-12-10T18:30:00").getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = target - now;
+            if (diff <= 0) return;
+
+            document.getElementById('cd-days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById('cd-hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Canvas de Estrellas de 4 Puntas Doradas y Polvo de Oro
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const stars = Array.from({ length: 58 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 4.5 + 1.8,
+            vy: Math.random() * -0.4 - 0.12,
+            vx: (Math.random() - 0.5) * 0.18,
+            phase: Math.random() * Math.PI * 2,
+            speed: Math.random() * 0.03 + 0.015
+        }));
+
+        function drawGoldStar(x, y, s, alpha) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.fillStyle = `rgba(253, 224, 71, ${alpha})`;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = 'rgba(212, 175, 55, 0.85)';
+            ctx.beginPath();
+            ctx.moveTo(0, -s * 1.5);
+            ctx.quadraticCurveTo(0, 0, s * 1.5, 0);
+            ctx.quadraticCurveTo(0, 0, 0, s * 1.5);
+            ctx.quadraticCurveTo(0, 0, -s * 1.5, 0);
+            ctx.quadraticCurveTo(0, 0, 0, -s * 1.5);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(st => {
+                st.x += st.vx;
+                st.y += st.vy;
+                st.phase += st.speed;
+                if (st.y < -15) st.y = canvas.height + 15;
+                if (st.x < -15) st.x = canvas.width + 15;
+                if (st.x > canvas.width + 15) st.x = -15;
+
+                const alpha = 0.25 + Math.abs(Math.sin(st.phase)) * 0.65;
+                drawGoldStar(st.x, st.y, st.size, alpha);
+            });
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+    </script>
+</body>
+</html>
